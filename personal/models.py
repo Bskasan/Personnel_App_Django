@@ -34,7 +34,7 @@ class Personal(models.Model):
     title = models.CharField(max_length=1, choices=TITLES)
     salary = models.IntegerField()
     started_date = models.DateField()
-    department_id = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
+    department_id = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, related_name='personal')
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

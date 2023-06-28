@@ -14,5 +14,12 @@ class PersonalSerializer(serializers.ModelSerializer):
         model = Personal
         fields = '__all__'
 
+# ------------------------ NESTED SERIALIZER ----------------------- #
+class DepartmentPersonalNestedSerializer(serializers.ModelSerializer):
 
+    personal = PersonalSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Department
+        fields = ('id', 'name', 'personal')
     
