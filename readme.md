@@ -21,20 +21,3 @@
 
 --> MODELS -> SERIALIZERS -> VIEWS -> URLS.PY <--
 
-Create Models;
-- Department
-    * name
-    * user_id
-    * created
-    * updated
-- Personal
-    * first_name
-    * last_name
-    * gender
-    * title
-    * salary
-    * started
-    * department_id
-    * user_id
-    * created
-    * updated
