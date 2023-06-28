@@ -18,9 +18,20 @@
 - python manage.py migrate --> to migrate your database
 - Create .env and secure your SECRET_KEY by using python-decouple
 
-Models;
+Create Models;
 - Department
     * name
+    * user_id
+    * created
+    * updated
+- Personal
+    * first_name
+    * last_name
+    * gender
+    * title
+    * salary
+    * started
+    * department_id
     * user_id
     * created
     * updated
