@@ -12,9 +12,14 @@ class PersonalSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Personal
-        fields = '__all__'
+        fields = (
+            'first_name',
+            'last_name',
+            'title'
+            )
 
 # ------------------------ NESTED SERIALIZER ----------------------- #
+# to see our personal details inside of the each department.
 class DepartmentPersonalNestedSerializer(serializers.ModelSerializer):
 
     personal = PersonalSerializer(many=True, read_only=True)
