@@ -7,10 +7,13 @@
 * Personeli silme yetkisi sadece superuserlarda olacak.
 * Token authentication kullanacağız. Kullanıcı logout olduğunda tokeni sileceğiz.
 
-# STEPS:
+## STEPS:
 
 - python -m venv env
 - source env/Scripts/activate
 - pip install djangorestframework
 - pip freeze > requirements.txt
 - django-admin startproject main .
+- Check if it's working or not --> python manage.py runserver
+- python manage.py migrate --> to migrate your database
+- 
