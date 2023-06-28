@@ -13,3 +13,4 @@
 - source env/Scripts/activate
 - pip install djangorestframework
 - pip freeze > requirements.txt
+- django-admin startproject main .
