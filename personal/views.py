@@ -30,8 +30,17 @@ class PersonalRUDView(RetrieveUpdateDestroyAPIView):
     queryset = Personal.objects.all()
     serializer_class = PersonalSerializer
 
-
+# --------------------- NESTED VIEW ------------------- #
 class DepartmentPersonalView(ListAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentPersonalNestedSerializer
+
+    def get_queryset(self):
+        """
+        Optionally restricts the returned department to a given one,
+        by filtering against a `department` query parameter in the URL.
+        """
+        department = self.kwargs['department']
+        if department is not None:
+            return Department.objects.filter(name__iexact=department)
 
