@@ -6,3 +6,10 @@
 * Staff olmayanlar sadece listeleyebiliecek.
 * Personeli silme yetkisi sadece superuserlarda olacak.
 * Token authentication kullanacağız. Kullanıcı logout olduğunda tokeni sileceğiz.
+
+# STEPS:
+
+- python -m venv env
+- source env/Scripts/activate
+- pip install djangorestframework
+- pip freeze > requirements.txt
