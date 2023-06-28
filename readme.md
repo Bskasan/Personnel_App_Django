@@ -17,6 +17,7 @@
 - Check if it's working or not --> python manage.py runserver
 - python manage.py migrate --> to migrate your database
 - Create .env and secure your SECRET_KEY by using python-decouple
+- Don't forget to make admin.register your models.
 
 Create Models;
 - Department
