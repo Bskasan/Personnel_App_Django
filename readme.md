@@ -19,6 +19,8 @@
 - Create .env and secure your SECRET_KEY by using python-decouple
 - Don't forget to make admin.register your models.
 
+--> MODELS -> SERIALIZERS -> VIEWS -> URLS.PY <--
+
 Create Models;
 - Department
     * name
