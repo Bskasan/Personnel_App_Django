@@ -11,9 +11,18 @@ from rest_framework.generics import (
     ListAPIView,
     )
 
+from .permissions import IsAdminOrReadOnly
+from rest_framework.permissions import IsAuthenticated
+
 class DepartmentListCreateView(ListCreateAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
+    permission_classes = (
+        # First check authentication
+        IsAuthenticated,
+        # Then check is admin or readonly.
+        IsAdminOrReadOnly,
+    )
 
 
 class DepartmentRUDView(RetrieveUpdateDestroyAPIView):
