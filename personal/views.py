@@ -14,6 +14,9 @@ from rest_framework.generics import (
 from .permissions import IsAdminOrReadOnly
 from rest_framework.permissions import IsAuthenticated
 
+from rest_framework.response import Response
+from rest_framework import status
+
 class DepartmentListCreateView(ListCreateAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
@@ -44,6 +47,31 @@ class PersonalListCreateView(ListCreateAPIView):
 class PersonalRUDView(RetrieveUpdateDestroyAPIView):
     queryset = Personal.objects.all()
     serializer_class = PersonalSerializer
+
+    def put(self, request, *args, **kwargs):
+        if self.request.user.is_superuser or self.request.user.is_staff:
+            return self.update(request, *args, **kwargs)
+        
+        data = {
+            'message': 'You are not authorized to update '
+        }
+
+        return Response(data, status=status.HTTP_401_UNAUTHORIZED)
+    
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        # self.perform_destroy(instance)
+        if self.request.user.is_superuser:
+            instance.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        data = {
+            'message': 'You are not authorized to delete'
+        }
+
+        return Response(data, status=status.HTTP_401_UNAUTHORIZED)
+
+    
 
 # --------------------- NESTED VIEW ------------------- #
 class DepartmentPersonalView(ListAPIView):
