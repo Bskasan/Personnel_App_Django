@@ -47,6 +47,7 @@ class PersonalListCreateView(ListCreateAPIView):
 class PersonalRUDView(RetrieveUpdateDestroyAPIView):
     queryset = Personal.objects.all()
     serializer_class = PersonalSerializer
+    permission_classes = [IsAuthenticated]
 
     def put(self, request, *args, **kwargs):
         if self.request.user.is_superuser or self.request.user.is_staff:
