@@ -33,6 +33,12 @@ class DepartmentRUDView(RetrieveUpdateDestroyAPIView):
 class PersonalListCreateView(ListCreateAPIView):
     queryset = Personal.objects.all()
     serializer_class = PersonalSerializer
+    permission_classes = (
+        # First check authentication
+        IsAuthenticated,
+        # Then check is admin or readonly.
+        IsAdminOrReadOnly,
+    )
 
 
 class PersonalRUDView(RetrieveUpdateDestroyAPIView):
@@ -43,6 +49,12 @@ class PersonalRUDView(RetrieveUpdateDestroyAPIView):
 class DepartmentPersonalView(ListAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentPersonalNestedSerializer
+    permission_classes = (
+        # First check authentication
+        IsAuthenticated,
+        # Then check is admin or readonly.
+        IsAdminOrReadOnly,
+    )
 
     def get_queryset(self):
         """
