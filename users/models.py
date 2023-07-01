@@ -8,4 +8,4 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return self.user.username
