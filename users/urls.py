@@ -4,7 +4,7 @@ from .views import RegisterView, ProfileUpdateView
 urlpatterns = [
     path('auth/', include('dj_rest_auth.urls')),
     path('register/', RegisterView.as_view()),
-    path('profile/', ProfileUpdateView.as_view()),
+    path('profile/<int:pk>/', ProfileUpdateView.as_view()),
 ]
 
 # An API endpoint is a point at which an API -- the code that allows two software programs to communicate with each other -- connects with the software program. APIs work by sending requests for information from a web application or web server and receiving a response.

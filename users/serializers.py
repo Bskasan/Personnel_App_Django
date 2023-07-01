@@ -81,7 +81,7 @@ class CustomTokenSerializer(TokenSerializer):
             )
 
 class ProfileSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
+    user = serializers.StringRelatedField() # to get user string name.
     class Meta:
         model = Profile
         fields = (
