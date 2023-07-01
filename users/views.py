@@ -6,6 +6,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from .models import Profile
+from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsOwnerOrStaff
 
 # Create your views here.
 class RegisterView(CreateAPIView):
@@ -31,3 +34,12 @@ class RegisterView(CreateAPIView):
 class ProfileUpdateView(RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    permission_classes = (IsAuthenticated, IsOwnerOrStaff)
+
+@api_view(['POST'])
+def logout(request):
+    request.user.auth_token.delete()
+    data = {
+        'message':'Logged out successfully!'
+    }
+    return Response(data, status=status.HTTP_200_OK)
